@@ -1,24 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:soul_serenity/pages/morning_pre4.dart';
 import 'package:soul_serenity/theme.dart';
+import 'package:chips_choice/chips_choice.dart';
 
 class MorningPre2 extends StatefulWidget {
-  final int initialValue;
-
-  const MorningPre2({Key? key, this.initialValue = 0}) : super(key: key);
+  const MorningPre2({super.key});
 
   @override
-  _MorningPre2State createState() => _MorningPre2State();
+  State<MorningPre2> createState() => _MorningPre2State();
 }
 
 class _MorningPre2State extends State<MorningPre2> {
-  int currentValue = 0;
+  int currentValue = 1;
   String currentImage = "assets/emote1.png";
+  int tag = 1;
+  List<String> tags = [];
+  List<String> options = [
+    'Work',
+    'Relaxing',
+    'Family', 
+    'Friends',
+    'Selfcare',
+    'Partner',
+    'Learning',
+    'Party',
+    'Music',
+    'Cleaning',
+    'Health',
+    'Movies',
+    'Gaming',
+    'Travel',
+    'Meal',
+    'Shopping',
+    'Sports',
+    'Creative',
+    'Pets',
+    'Dates'
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      // mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(height: 30),
         Row(
@@ -40,126 +61,54 @@ class _MorningPre2State extends State<MorningPre2> {
             ),
           ),
         ),
-        SizedBox(height: 200),
-        Text("How well did you sleep today?",style: boldTextStyle.copyWith(fontSize: 20,color: greenColor)),
-        SizedBox(height: 40),
-        Center(
-          child: Container(
-            width: 400,
-            decoration: BoxDecoration(
-                color: green2Color, borderRadius: BorderRadius.circular(50)),
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    width: 60,
-                    height: 60,
-                    child: OutlinedButton(
-                      onPressed: () {
-                        // setState(() {
-                        //   currentImage = "assets/onemote1.png";
-                        // });
-                      },
-                      child: Text("0%",style: boldTextStyle.copyWith(fontSize: 11)),
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: greenColor, // Warna teks
-                        side: BorderSide(color: greenColor, width: 3),
-                        backgroundColor: green2Color, // Warna border
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                      )
-                    ),
+        SizedBox(height: 30),
+        Text("What's your main focus for today?",
+            style: boldTextStyle.copyWith(fontSize: 20, color: greenColor)),
+        SizedBox(height: 20),
+        Text("Pick up to 3!",
+            style: lightTextStyle.copyWith(color: greenColor, fontSize: 14)),
+        SizedBox(height: 20),
+
+        Padding(
+          padding: EdgeInsets.all(15.0),
+          child: Column(
+            children: [
+              ChipsChoice<String>.multiple(
+                value: tags,
+                alignment: WrapAlignment.center,
+                // onChanged: (val) => setState(() => tags = val),
+                onChanged: (val) {
+                  if (val.length <= 3) {
+                    setState(() =>
+                      tags = val
+                    );
+                  }
+                },
+                choiceItems: C2Choice.listFrom(
+                    source: options, value: (i, v) => v, label: (i, v) => v),
+                wrapped: true,
+                choiceStyle: C2ChipStyle.toned(
+                  height: 50,
+                  borderStyle: BorderStyle.solid,
+                  borderRadius: BorderRadius.circular(50),
+                  backgroundColor: green2Color,
+                  backgroundOpacity: 1,
+                  borderWidth: 1,
+                  borderColor: greenColor,
+                  foregroundStyle: lightTextStyle,
+                  foregroundColor: greenColor,
+                  selectedStyle: C2ChipStyle(
+                    foregroundStyle: boldTextStyle,
+                    borderColor: greenColor,
+                    borderWidth: 2
                   ),
-                  Container(
-                    width: 60,
-                    height: 60,
-                    child: OutlinedButton(
-                      onPressed: () {
-                        // setState(() {
-                        //   currentImage = "assets/onemote1.png";
-                        // });
-                      },
-                      child: Text("25%",style: boldTextStyle.copyWith(fontSize: 11)),
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: greenColor, // Warna teks
-                        side: BorderSide(color: greenColor, width: 3),
-                        backgroundColor: green2Color, // Warna border
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                      )
-                    ),
-                  ),
-                  Container(
-                    width: 60,
-                    height: 60,
-                    child: OutlinedButton(
-                      onPressed: () {
-                        // setState(() {
-                        //   currentImage = "assets/onemote1.png";
-                        // });
-                      },
-                      child: Text("50%",style: boldTextStyle.copyWith(fontSize: 11)),
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: greenColor, // Warna teks
-                        side: BorderSide(color: greenColor, width: 3),
-                        backgroundColor: green2Color, // Warna border
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                      )
-                    ),
-                  ),
-                  Container(
-                    width: 60,
-                    height: 60,
-                    child: OutlinedButton(
-                      onPressed: () {
-                        // setState(() {
-                        //   currentImage = "assets/onemote1.png";
-                        // });
-                      },
-                      child: Text("75%",style: boldTextStyle.copyWith(fontSize: 11)),
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: greenColor, // Warna teks
-                        side: BorderSide(color: greenColor, width: 3),
-                        backgroundColor: green2Color, // Warna border
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                      )
-                    ),
-                  ),
-                  Container(
-                    width: 60,
-                    height: 60,
-                    child: OutlinedButton(
-                      onPressed: () {
-                        // setState(() {
-                        //   currentImage = "assets/onemote1.png";
-                        // });
-                      },
-                      child: Text("100%",style: boldTextStyle.copyWith(fontSize: 11)),
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: greenColor, // Warna teks
-                        side: BorderSide(color: greenColor, width: 3),
-                        backgroundColor: green2Color, // Warna border
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                      )
-                    ),
-                  ),
-                  
-                ],
-              ),
-            ),
+                ),
+              
+              )
+            ],
           ),
         ),
-        SizedBox(height: 200),
+        SizedBox(height: 70),
         Padding(
           padding: const EdgeInsets.only(right: 50.0),
           child: Row(
@@ -170,6 +119,10 @@ class _MorningPre2State extends State<MorningPre2> {
                 height: 50,
                 child: OutlinedButton(
                     onPressed: () {
+                      // Navigator.pushReplacement(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => MorningPre2()));
                       moveToNext();
                     },
                     child: Image.asset("assets/next.png"),
@@ -180,7 +133,6 @@ class _MorningPre2State extends State<MorningPre2> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(100),
                       ),
-        
                     )),
               ),
             ],
@@ -194,6 +146,5 @@ class _MorningPre2State extends State<MorningPre2> {
     setState(() {
       currentValue = (currentValue + 1) % 3;
     });
-    
   }
 }
