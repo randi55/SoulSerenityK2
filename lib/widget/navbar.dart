@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soul_serenity/TEST/morning_button.dart';
 import 'package:soul_serenity/pages/evening_pre1.dart';
 import 'package:soul_serenity/pages/evening_pre2.dart';
 import 'package:soul_serenity/pages/evening_pre4.dart';
@@ -8,7 +9,6 @@ import 'package:soul_serenity/pages/morning_pre2.dart';
 import 'package:soul_serenity/pages/morning_pre3.dart';
 import 'package:soul_serenity/pages/morning_pre4.dart';
 import 'package:soul_serenity/theme.dart';
-import 'package:soul_serenity/widget/morning_button.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -20,8 +20,8 @@ class NavBar extends StatefulWidget {
 class _NavBar extends State<NavBar> {
   int _currentIndex = 0;
   List<Widget> body = [
-    MorningPre3(),
     HomePage(),
+    MorningPre3(),
     EveningPre4(),
     MorningButton(),
   ];

@@ -11,4 +11,4 @@ TextStyle regulerTextStyle =
 TextStyle mediumTextStyle =
   GoogleFonts.poppins().copyWith(fontWeight: FontWeight.w500,decoration: TextDecoration.none);
 TextStyle boldTextStyle =
-  GoogleFonts.poppins().copyWith(fontWeight: FontWeight.w700,decoration: TextDecoration.none);
+  GoogleFonts.poppins().copyWith(fontWeight: FontWeight.w900,decoration: TextDecoration.none);

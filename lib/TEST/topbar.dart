@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:soul_serenity/theme.dart';
-import 'package:soul_serenity/widget/calendar.dart';
-import 'package:soul_serenity/widget/mood_button.dart';
 
 class TopBar extends StatelessWidget {
   const TopBar({super.key});
