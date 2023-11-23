@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soul_serenity/pages/morning_pre3.dart';
 import 'package:soul_serenity/theme.dart';
 import 'package:chips_choice/chips_choice.dart';
 
@@ -119,11 +120,11 @@ class _MorningPre2State extends State<MorningPre2> {
                 height: 50,
                 child: OutlinedButton(
                     onPressed: () {
-                      // Navigator.pushReplacement(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => MorningPre2()));
-                      moveToNext();
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MorningPre3()));
+                      // moveToNext();
                     },
                     child: Image.asset("assets/next.png"),
                     style: OutlinedButton.styleFrom(
