@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soul_serenity/pages/morning_pre3.dart';
+import 'package:soul_serenity/pages/morning/morning_pre3.dart';
 import 'package:soul_serenity/theme.dart';
 import 'package:chips_choice/chips_choice.dart';
 
@@ -49,9 +49,9 @@ class _MorningPre2State extends State<MorningPre2> {
             3,
             (index) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: AnimatedContainer(
-                curve: Curves.easeIn,
-                duration: Duration(milliseconds: 500),
+              child: Container(
+                // curve: Curves.easeIn,
+                // duration: Duration(milliseconds: 500),
                 width: index == currentValue ? 50 : 20,
                 height: 8,
                 decoration: BoxDecoration(
@@ -116,8 +116,8 @@ class _MorningPre2State extends State<MorningPre2> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Container(
-                width: 50,
-                height: 50,
+                width: 60,
+                height: 60,
                 child: OutlinedButton(
                     onPressed: () {
                       Navigator.pushReplacement(

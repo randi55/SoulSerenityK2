@@ -1,7 +1,5 @@
-import 'package:chips_choice/chips_choice.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:soul_serenity/pages/morning_pre4.dart';
+import 'package:soul_serenity/pages/morning/morning_pre4.dart';
 import 'package:soul_serenity/theme.dart';
 
 class MorningPre3 extends StatefulWidget {
@@ -14,7 +12,7 @@ class MorningPre3 extends StatefulWidget {
 }
 
 class _MorningPre3State extends State<MorningPre3> {
-  int currentValue = 0;
+  int currentValue = 2;
   late TextEditingController controller;
   String text = '';
 
@@ -42,9 +40,9 @@ class _MorningPre3State extends State<MorningPre3> {
                 3,
                 (index) => Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: AnimatedContainer(
-                    curve: Curves.easeIn,
-                    duration: Duration(milliseconds: 500),
+                  child: Container(
+                    // curve: Curves.easeIn,
+                    // duration: Duration(milliseconds: 500),
                     width: index == currentValue ? 50 : 20,
                     height: 8,
                     decoration: BoxDecoration(
@@ -94,7 +92,7 @@ class _MorningPre3State extends State<MorningPre3> {
               ),
             ),
 
-            SizedBox(height: 70),
+            SizedBox(height: 40),
             Padding(
               padding: const EdgeInsets.only(right: 50.0, left: 50),
               child: Row(
@@ -122,8 +120,8 @@ class _MorningPre3State extends State<MorningPre3> {
                         )),
                   ),
                   Container(
-                    width: 50,
-                    height: 50,
+                    width: 60,
+                    height: 60,
                     child: OutlinedButton(
                         onPressed: () {
                           Navigator.pushReplacement(

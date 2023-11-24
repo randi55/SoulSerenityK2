@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:soul_serenity/theme.dart';
+import 'package:soul_serenity/pages/navbar.dart';
 
-class EveningPre4 extends StatelessWidget {
-  const EveningPre4({super.key});
+class MorningPre4 extends StatelessWidget {
+  // final int currentValue;
+  const MorningPre4 ({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +25,17 @@ class EveningPre4 extends StatelessWidget {
             ),
           ],
         ),
-         Text("You've Completed your Evening Reflection",style: lightTextStyle.copyWith(color: greenColor,fontSize: 14)),
+         Text("Do you feel prepared for your day?",style: lightTextStyle.copyWith(color: greenColor,fontSize: 14)),
          SizedBox(height: 130),
          Container(
           width: MediaQuery.of(context).size.width - 350,
           height: 40,
            child: OutlinedButton(
             onPressed: () {
-         
+              Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NavBar()));
             },
             child: Text("Finish",style: boldTextStyle),
             style: OutlinedButton.styleFrom(

@@ -1,8 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:soul_serenity/firebase_options.dart';
-import 'package:soul_serenity/main_page.dart';
-import 'package:soul_serenity/widget/navbar.dart';
+import 'package:soul_serenity/pages/navbar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,9 +16,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainPage(),
+      home: NavBar(),
     );
   }
 }

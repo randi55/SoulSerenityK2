@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:soul_serenity/TEST/morning_button.dart';
-import 'package:soul_serenity/pages/evening_pre1.dart';
-import 'package:soul_serenity/pages/evening_pre2.dart';
-import 'package:soul_serenity/pages/evening_pre4.dart';
-import 'package:soul_serenity/pages/home_page.dart';
-import 'package:soul_serenity/pages/morning_pre1.dart';
-import 'package:soul_serenity/pages/morning_pre2.dart';
-import 'package:soul_serenity/pages/morning_pre3.dart';
-import 'package:soul_serenity/pages/morning_pre4.dart';
+import 'package:soul_serenity/pages/menu_page/explore_page.dart';
+import 'package:soul_serenity/pages/menu_page/home_page.dart';
+import 'package:soul_serenity/pages/menu_page/journal_page.dart';
+import 'package:soul_serenity/pages/menu_page/society_page.dart';
 import 'package:soul_serenity/theme.dart';
 
 class NavBar extends StatefulWidget {
@@ -21,9 +16,9 @@ class _NavBar extends State<NavBar> {
   int _currentIndex = 0;
   List<Widget> body = [
     HomePage(),
-    MorningPre3(),
-    EveningPre4(),
-    MorningButton(),
+    ExplorePage(),
+    SocietyPage(),
+    JournalPage(),
   ];
 
   @override

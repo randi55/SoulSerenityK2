@@ -1,6 +1,9 @@
+import 'package:chips_choice/chips_choice.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:soul_serenity/pages/morning_pre1.dart';
+import 'package:soul_serenity/pages/evening/evening_pre1.dart';
+import 'package:soul_serenity/pages/login_page.dart';
+import 'package:soul_serenity/pages/morning/morning_pre1.dart';
 import 'package:soul_serenity/theme.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -12,13 +15,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String currentImage = "assets/emote1.png";
+  // String currentImage = "assets/emote1.png";
   DateTime today = DateTime.now();
   void _onDaySelected(DateTime day, DateTime focusedDay) {
     setState(() {
       today = day;
     });
   }
+
+  int tag = 1;
+  List<String> tags = [];
+  List<String> options = [
+    '☹️',
+    '🙁',
+    '😐',
+    '🙂',
+    '😊',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -42,103 +55,50 @@ class _HomePageState extends State<HomePage> {
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
                       onTap: () {
-                        FirebaseAuth.instance.signOut();
-                      }, 
+                        FirebaseAuth.instance.signOut().then((value) {
+                          print("Signed Out");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage()));
+                        });
+                      },
                       child: Image.asset("assets/akun.png")),
                 ),
-                // ElevatedButton(
-                //   onPressed: () {},
-                //   child: Image.asset("assets/akun.png"),
-                //   style: ElevatedButton.styleFrom(
-                //     backgroundColor: Colors.transparent,
-                //     elevation: 0,
-                //     shadowColor: Colors.transparent,
-                //     shape: RoundedRectangleBorder(
-                //         borderRadius: BorderRadius.circular(8)),
-                //     // fixedSize: Size(50, 50)
-                //   ),
-                // ),
               ],
             ),
           ),
           //TOP BAR
 
-          //MOOD BUTTON
-          Center(
-            child: Container(
-              width: 410,
-              decoration: BoxDecoration(
-                  color: green2Color, borderRadius: BorderRadius.circular(20)),
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          currentImage = "assets/onemote1.png";
-                        });
-                      },
-                      child: Image.asset(currentImage),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        shadowColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: Image.asset("assets/emote2.png"),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        shadowColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: Image.asset("assets/emote3.png"),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        shadowColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: Image.asset("assets/emote4.png"),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        shadowColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: Image.asset("assets/emote5.png"),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        shadowColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+          Padding(
+            padding: EdgeInsets.all(0.0),
+            child: Column(
+              children: [
+                ChipsChoice.single(
+                  value: tag,
+                  onChanged: (val) => setState(() => tag = val),
+                  choiceItems: C2Choice.listFrom(
+                      source: options, value: (i, v) => i, label: (i, v) => v),
+                  wrapped: true,
+                  choiceStyle: C2ChipStyle.toned(
+                    height: 25,
+                    borderStyle: BorderStyle.solid,
+                    borderRadius: BorderRadius.circular(50),
+                    backgroundColor: green2Color,
+                    backgroundOpacity: 1,
+                    borderWidth: 1,
+                    borderColor: greenColor,
+                    foregroundStyle: lightTextStyle,
+                    foregroundColor: greenColor,
+                    selectedStyle: C2ChipStyle(
+                        foregroundStyle: boldTextStyle,
+                        borderColor: greenColor,
+                        borderWidth: 2),
+                  ),
+                )
+              ],
             ),
           ),
-          // MOOD BUTTON
 
           // CALENDAR
           Column(
@@ -245,7 +205,10 @@ class _HomePageState extends State<HomePage> {
             width: MediaQuery.of(context).size.width - 220,
             height: 90,
             child: OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => EveningPre1()));
+              },
               child: Row(
                 children: [
                   SizedBox(width: 35),

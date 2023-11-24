@@ -1,36 +1,58 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:soul_serenity/pages/forgot_password.dart';
-import 'package:soul_serenity/pages/signup_page.dart';
+import 'package:soul_serenity/pages/login_page.dart';
 import 'package:soul_serenity/theme.dart';
-import 'package:soul_serenity/pages/navbar.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
+  final _fullNameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  signIn() async {
+  signUp() async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim());
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => NavBar()));
-    } on FirebaseAuthException {
+      //Membuat akun baru
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text, password: _passwordController.text);
       Fluttertoast.showToast(
-        msg: "Incorrect Email or Password",
+          msg: "You have succesfully created an account, Log In Now",
+          gravity: ToastGravity.TOP,
+          timeInSecForIosWeb: 2);
+
+      // Menambahkan detail akun
+      addUserDetails();
+
+      // addUserDetails(
+      //     _fullNameController.text.trim(), _emailController.text.trim());
+
+    } on FirebaseAuthException catch (error) {
+      Fluttertoast.showToast(
+        msg: error.message!,
         gravity: ToastGravity.TOP,
         timeInSecForIosWeb: 2,
       );
     }
+  }
+
+  addUserDetails() async {
+    CollectionReference collRef = FirebaseFirestore.instance.collection('User');
+    collRef.add({
+      'fullName': _fullNameController.text,
+      'email': _emailController.text,
+    });
+    
+    // await FirebaseFirestore.instance.collection('User').add({
+    //   'fullName': fullName,
+    //   'email': email,
+    // });
   }
 
   bool _secureText = true;
@@ -40,8 +62,8 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-  @override
   void dispose() {
+    _fullNameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -93,9 +115,53 @@ class _LoginPageState extends State<LoginPage> {
                     style: boldTextStyle.copyWith(
                         color: greenColor, fontSize: 24, letterSpacing: 12)),
                 SizedBox(height: 10),
-                Text("Log into your account",
-                    style: regulerTextStyle.copyWith(
-                        color: greenColor, fontSize: 14)),
+                Column(
+                  children: [
+                    Text("Create an account to",
+                        style: regulerTextStyle.copyWith(
+                            color: greenColor, fontSize: 14)),
+                    Text("save your progress",
+                        style: regulerTextStyle.copyWith(
+                            color: greenColor, fontSize: 14)),
+                  ],
+                ),
+
+                // FULLNAME TEXTFIELD
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30.0, bottom: 5.0),
+                      child: Text(
+                        "Full Name",
+                        style: regulerTextStyle.copyWith(color: greenColor),
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: green2Color,
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: TextField(
+                        controller: _fullNameController,
+                        style: regulerTextStyle.copyWith(color: greenColor),
+                        cursorColor: greenColor,
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Insert Full Name",
+                            hintStyle: regulerTextStyle.copyWith(
+                              color: greenColor.withOpacity(0.5),
+                            )),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15.0),
 
                 //EMAIL TEXTFIELD
                 Row(
@@ -187,34 +253,13 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(height: 20.0),
 
-                //FORGOT PASSWORD
-                MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ForgotPassword()));
-                    },
-                    child: Text(
-                      "Forgot Password?",
-                      style: boldTextStyle.copyWith(
-                          color: greenColor,
-                          decoration: TextDecoration.underline,
-                          fontSize: 16),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20.0),
-
-                //SIGNIN BUTTON
+                //SIGNUP BUTTON
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
                     child: GestureDetector(
-                      onTap: signIn,
+                      onTap: signUp,
                       child: Container(
                         width: MediaQuery.of(context).size.width - 220,
                         padding: EdgeInsets.all(15.0),
@@ -224,7 +269,7 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(50)),
                         child: Center(
                           child: Text(
-                            "Sign In",
+                            "Create Account",
                             style: boldTextStyle.copyWith(color: greenColor),
                           ),
                         ),
@@ -239,12 +284,12 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Your use of SoulSerenity is subject to",
+                      "By clicking Create Account, you agree",
                       style: regulerTextStyle.copyWith(color: greenColor),
                     ),
                     RichText(
                       text: TextSpan(
-                        text: "our ",
+                        text: "to our ",
                         style: regulerTextStyle.copyWith(color: greenColor),
                         children: [
                           TextSpan(
@@ -269,14 +314,14 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
 
-                SizedBox(height: 160),
+                SizedBox(height: 90),
 
                 //CREATE ACCOUNT
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Need an Account?",
+                      "Have an Account?",
                       style: boldTextStyle.copyWith(
                           color: greenColor, fontSize: 16),
                     ),
@@ -287,10 +332,10 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SignUpPage()));
+                                  builder: (context) => LoginPage()));
                         },
                         child: Text(
-                          " Sign Up",
+                          " Log In",
                           style: boldTextStyle.copyWith(
                               color: greenColor,
                               decoration: TextDecoration.underline,
