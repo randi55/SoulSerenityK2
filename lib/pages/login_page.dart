@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:soul_serenity/pages/forgot_password.dart';
 import 'package:soul_serenity/pages/landing_page.dart';
-import 'package:soul_serenity/pages/privacy.dart';
+import 'package:soul_serenity/pages/profile/privacy.dart';
 import 'package:soul_serenity/pages/signup_page.dart';
 import 'package:soul_serenity/theme.dart';
 import 'package:soul_serenity/pages/navbar.dart';

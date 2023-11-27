@@ -1,19 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:soul_serenity/pages/morning/morning_pre4.dart';
+import 'package:soul_serenity/pages/evening/evening_pre4.dart';
 import 'package:soul_serenity/theme.dart';
 
-class MorningPre extends StatefulWidget {
-  const MorningPre({super.key});
+class EveningPre extends StatefulWidget {
+  const EveningPre({super.key});
 
   @override
-  State<MorningPre> createState() => _MorningPreState();
+  State<EveningPre> createState() => _EveningPreState();
 }
 
-class _MorningPreState extends State<MorningPre> {
-  TextEditingController _planController = TextEditingController();
+class _EveningPreState extends State<EveningPre> {
+  TextEditingController _summaryController = TextEditingController();
   String percentage = "";
-  String mainFocus = "";
+  String descFeeling = "";
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class _MorningPreState extends State<MorningPre> {
             ),
             SizedBox(width: 10),
             Text(
-              "Begin your morning preparation ☀️",
+              "End your evening with reflection 🌙",
               style: boldTextStyle.copyWith(color: greenColor, fontSize: 20),
             ),
           ],
@@ -53,7 +53,7 @@ class _MorningPreState extends State<MorningPre> {
       SizedBox(
         height: 40,
       ),
-      label("How well did you sleep today?"),
+      label("How well rested did you feel today?"),
       Row(
         children: [
           percentageSelect("0%"),
@@ -66,29 +66,29 @@ class _MorningPreState extends State<MorningPre> {
       SizedBox(
         height: 20,
       ),
-      label("What’s your main focus for today?"),
+      label("How would you describe how you’re feeling today?"),
       Row(
         children: [
-          mainFocusSelect("Work"),
-          mainFocusSelect("Relaxing"),
-          mainFocusSelect("Learning"),
-          mainFocusSelect("Friends"),
-          mainFocusSelect("Party"),
+          mainFocusSelect("Satisfied"),
+          mainFocusSelect("Exited"),
+          mainFocusSelect("Calm"),
+          mainFocusSelect("Loved"),
+          mainFocusSelect("Tired"),
         ],
       ),
       Row(
         children: [
-          mainFocusSelect("Selfcare"),
-          mainFocusSelect("Partner"),
-          mainFocusSelect("Family"),
-          mainFocusSelect("Cleaning"),
+          mainFocusSelect("Bored"),
+          mainFocusSelect("Lonely"),
+          mainFocusSelect("Distracted"),
+          mainFocusSelect("Sad"),
           mainFocusSelect("Others"),
         ],
       ),
       SizedBox(
         height: 20,
       ),
-      label("What do you plan to do today?"),
+      label("Write a short summary of your day."),
       textField(context),
       SizedBox(
         height: 20,
@@ -103,15 +103,15 @@ class _MorningPreState extends State<MorningPre> {
               height: 60,
               child: OutlinedButton(
                   onPressed: () {
-                    FirebaseFirestore.instance.collection("mornPrep").add({
+                    FirebaseFirestore.instance.collection("evePrep").add({
                       "percentage": percentage,
-                      "mainFocus": mainFocus,
-                      "plan": _planController.text
+                      "descFeeling": descFeeling,
+                      "summary": _summaryController.text
                     });
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => MorningPre4()));
+                            builder: (context) => EveningPre4()));
                   },
                   child: Image.asset("assets/next.png"),
                   style: OutlinedButton.styleFrom(
@@ -160,11 +160,11 @@ class _MorningPreState extends State<MorningPre> {
       child: InkWell(
         onTap: () {
           setState(() {
-            mainFocus = label;
+            descFeeling = label;
           });
         },
         child: Chip(
-          backgroundColor: mainFocus == label ? Colors.green : green2Color,
+          backgroundColor: descFeeling == label ? Colors.green : green2Color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -186,7 +186,7 @@ class _MorningPreState extends State<MorningPre> {
       width: MediaQuery.of(context).size.width - 50,
       decoration: BoxDecoration(),
       child: TextFormField(
-          controller: _planController,
+          controller: _summaryController,
           maxLines: 10,
           style: regulerTextStyle.copyWith(color: greenColor, fontSize: 14),
           decoration: InputDecoration(

@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:soul_serenity/pages/morning/morning_pre3.dart';
+import 'package:soul_serenity/TEST/morning_pre3.dart';
 import 'package:soul_serenity/theme.dart';
 import 'package:chips_choice/chips_choice.dart';
 
@@ -143,7 +143,7 @@ class _MorningPre2State extends State<MorningPre2> {
                 height: 60,
                 child: OutlinedButton(
                     onPressed: () {
-                      sendDataToFirebase();
+                      // sendDataToFirebase();
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(

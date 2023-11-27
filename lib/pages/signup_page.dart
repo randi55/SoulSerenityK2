@@ -4,7 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:soul_serenity/pages/login_page.dart';
-import 'package:soul_serenity/pages/privacy.dart';
+import 'package:soul_serenity/pages/profile/privacy.dart';
 import 'package:soul_serenity/theme.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -32,8 +32,7 @@ class _SignUpPageState extends State<SignUpPage> {
       // Menambahkan detail akun
       addUserDetails();
 
-      // addUserDetails(
-      //     _fullNameController.text.trim(), _emailController.text.trim());
+      
     } on FirebaseAuthException catch (error) {
       Fluttertoast.showToast(
         msg: error.message!,
@@ -44,16 +43,11 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   addUserDetails() async {
-    CollectionReference collRef = FirebaseFirestore.instance.collection('User/mornP');
+    CollectionReference collRef = FirebaseFirestore.instance.collection('User');
     collRef.add({
       'fullName': _fullNameController.text,
       'email': _emailController.text,
     });
-
-    // await FirebaseFirestore.instance.collection('User').add({
-    //   'fullName': fullName,
-    //   'email': email,
-    // });
   }
 
 

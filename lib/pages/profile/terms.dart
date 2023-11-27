@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:soul_serenity/pages/login_page.dart';
 import 'package:soul_serenity/pages/profile/account_page.dart';
 import 'package:soul_serenity/theme.dart';
 

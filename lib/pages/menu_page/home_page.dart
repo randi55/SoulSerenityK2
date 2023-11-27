@@ -1,9 +1,7 @@
 import 'package:chips_choice/chips_choice.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:soul_serenity/pages/evening/evening_pre1.dart';
-import 'package:soul_serenity/pages/login_page.dart';
-import 'package:soul_serenity/pages/morning/morning_pre1.dart';
+import 'package:soul_serenity/pages/evening/evening_pre.dart';
+import 'package:soul_serenity/pages/morning/morning_pre.dart';
 import 'package:soul_serenity/pages/profile/account_page.dart';
 import 'package:soul_serenity/theme.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -14,9 +12,8 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
-
+ 
 class _HomePageState extends State<HomePage> {
-  // String currentImage = "assets/emote1.png";
   DateTime today = DateTime.now();
   void _onDaySelected(DateTime day, DateTime focusedDay) {
     setState(() {
@@ -37,8 +34,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        //TOP BAR
         body: SingleChildScrollView(
+        //TOP BAR
       child: Column(
         children: [
           Padding(
@@ -163,7 +160,7 @@ class _HomePageState extends State<HomePage> {
             child: OutlinedButton(
               onPressed: () {
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => MorningPre1()));
+                    MaterialPageRoute(builder: (context) => MorningPre()));
               },
               child: Row(
                 children: [
@@ -205,7 +202,7 @@ class _HomePageState extends State<HomePage> {
             child: OutlinedButton(
               onPressed: () {
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => EveningPre1()));
+                    MaterialPageRoute(builder: (context) => EveningPre()));
               },
               child: Row(
                 children: [

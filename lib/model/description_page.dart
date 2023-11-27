@@ -12,7 +12,7 @@ class DescriptionPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Card Description'),
-        backgroundColor: greenColor,
+        backgroundColor: green2Color,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
