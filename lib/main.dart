@@ -4,6 +4,9 @@ import 'package:soul_serenity/firebase_options.dart';
 import 'package:soul_serenity/pages/menu_page/explore_page.dart';
 import 'package:soul_serenity/pages/navbar.dart';
 import 'package:soul_serenity/pages/profile/change_pass_page.dart';
+// import 'package:soul_serenity/pages/signup_page.dart';
+import 'pages/menu_page/explore_page.dart';
+// import 'pages/menu_page/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: NavBar(),
+      home: ExplorePage(),
     );
   }
 }

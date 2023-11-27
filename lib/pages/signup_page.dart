@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:soul_serenity/pages/login_page.dart';
+import 'package:soul_serenity/pages/privacy.dart';
 import 'package:soul_serenity/theme.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -30,6 +32,8 @@ class _SignUpPageState extends State<SignUpPage> {
       // Menambahkan detail akun
       addUserDetails();
 
+      // addUserDetails(
+      //     _fullNameController.text.trim(), _emailController.text.trim());
     } on FirebaseAuthException catch (error) {
       Fluttertoast.showToast(
         msg: error.message!,
@@ -45,7 +49,7 @@ class _SignUpPageState extends State<SignUpPage> {
       'fullName': _fullNameController.text,
       'email': _emailController.text,
     });
-    
+
     // await FirebaseFirestore.instance.collection('User').add({
     //   'fullName': fullName,
     //   'email': email,
@@ -292,7 +296,19 @@ class _SignUpPageState extends State<SignUpPage> {
                         children: [
                           TextSpan(
                             text: "Terms of Use",
-                            style: boldTextStyle.copyWith(color: greenColor),
+                            style: boldTextStyle.copyWith(
+                              color: greenColor,
+                              decoration: TextDecoration.underline,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => PrivacyPage(),
+                                  ),
+                                );
+                              },
                           ),
                           TextSpan(
                             text: " and ",
@@ -300,7 +316,19 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           TextSpan(
                             text: "Privacy Policy",
-                            style: boldTextStyle.copyWith(color: greenColor),
+                            style: boldTextStyle.copyWith(
+                              color: greenColor,
+                              decoration: TextDecoration.underline,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => PrivacyPage(),
+                                  ),
+                                );
+                              },
                           ),
                           TextSpan(
                             text: ".",

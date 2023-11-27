@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:soul_serenity/pages/forgot_password.dart';
 import 'package:soul_serenity/pages/landing_page.dart';
+import 'package:soul_serenity/pages/privacy.dart';
 import 'package:soul_serenity/pages/signup_page.dart';
 import 'package:soul_serenity/theme.dart';
 import 'package:soul_serenity/pages/navbar.dart';
@@ -194,9 +196,9 @@ class _LoginPageState extends State<LoginPage> {
                   child: GestureDetector(
                     onTap: () {
                       Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ForgotPassword()));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ForgotPassword()));
                     },
                     child: Text(
                       "Forgot Password?",
@@ -250,7 +252,19 @@ class _LoginPageState extends State<LoginPage> {
                         children: [
                           TextSpan(
                             text: "Terms of Use",
-                            style: boldTextStyle.copyWith(color: greenColor),
+                            style: boldTextStyle.copyWith(
+                              color: greenColor,
+                              decoration: TextDecoration.underline,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => PrivacyPage(),
+                                  ),
+                                );
+                              },
                           ),
                           TextSpan(
                             text: " and ",
@@ -258,7 +272,19 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           TextSpan(
                             text: "Privacy Policy",
-                            style: boldTextStyle.copyWith(color: greenColor),
+                            style: boldTextStyle.copyWith(
+                              color: greenColor,
+                              decoration: TextDecoration.underline,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => PrivacyPage(),
+                                  ),
+                                );
+                              },
                           ),
                           TextSpan(
                             text: ".",
