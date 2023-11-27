@@ -30,9 +30,6 @@ class _SignUpPageState extends State<SignUpPage> {
       // Menambahkan detail akun
       addUserDetails();
 
-      // addUserDetails(
-      //     _fullNameController.text.trim(), _emailController.text.trim());
-
     } on FirebaseAuthException catch (error) {
       Fluttertoast.showToast(
         msg: error.message!,
@@ -43,7 +40,7 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   addUserDetails() async {
-    CollectionReference collRef = FirebaseFirestore.instance.collection('User');
+    CollectionReference collRef = FirebaseFirestore.instance.collection('User/mornP');
     collRef.add({
       'fullName': _fullNameController.text,
       'email': _emailController.text,
@@ -54,6 +51,7 @@ class _SignUpPageState extends State<SignUpPage> {
     //   'email': email,
     // });
   }
+
 
   bool _secureText = true;
   showHide() {
@@ -89,10 +87,10 @@ class _SignUpPageState extends State<SignUpPage> {
                         // height: 55,
                         child: ElevatedButton(
                             onPressed: () {
-                              // Navigator.pushReplacement(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) => MorningPre2()));
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginPage()));
                             },
                             child: Image.asset(
                               "assets/back.png",
@@ -274,7 +272,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                       ),
-                    ),
+                    ), 
                   ),
                 ),
                 SizedBox(height: 20.0),

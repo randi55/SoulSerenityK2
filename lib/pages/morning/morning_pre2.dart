@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:soul_serenity/pages/morning/morning_pre3.dart';
 import 'package:soul_serenity/theme.dart';
@@ -11,14 +13,40 @@ class MorningPre2 extends StatefulWidget {
 }
 
 class _MorningPre2State extends State<MorningPre2> {
+  
+  Future<void> sendDataToFirebase() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
+
+    final databaseReference = FirebaseDatabase.instance.ref();
+
+    // Misal data yang ingin dikirim ke Firebase adalah data user dan data yang telah dipilih
+    final dataUser = {
+      'fullName': 'Randi Trinanda',
+      'email': 'john.doe@example.com',
+    };
+
+    final dataPicked = {
+      'work': true,
+      'relaxing': true,
+      'partner': true,
+      // Tambahkan data lain yang ingin dikirim ke Firebase
+    };
+
+    await databaseReference.child('User').push().set({
+      ...dataUser,
+      ...dataPicked,
+    });
+  }
+
+
   int currentValue = 1;
-  String currentImage = "assets/emote1.png";
   int tag = 1;
   List<String> tags = [];
   List<String> options = [
     'Work',
     'Relaxing',
-    'Family', 
+    'Family',
     'Friends',
     'Selfcare',
     'Partner',
@@ -69,7 +97,6 @@ class _MorningPre2State extends State<MorningPre2> {
         Text("Pick up to 3!",
             style: lightTextStyle.copyWith(color: greenColor, fontSize: 14)),
         SizedBox(height: 20),
-
         Padding(
           padding: EdgeInsets.all(15.0),
           child: Column(
@@ -80,9 +107,7 @@ class _MorningPre2State extends State<MorningPre2> {
                 // onChanged: (val) => setState(() => tags = val),
                 onChanged: (val) {
                   if (val.length <= 3) {
-                    setState(() =>
-                      tags = val
-                    );
+                    setState(() => tags = val);
                   }
                 },
                 choiceItems: C2Choice.listFrom(
@@ -99,12 +124,10 @@ class _MorningPre2State extends State<MorningPre2> {
                   foregroundStyle: lightTextStyle,
                   foregroundColor: greenColor,
                   selectedStyle: C2ChipStyle(
-                    foregroundStyle: boldTextStyle,
-                    borderColor: greenColor,
-                    borderWidth: 2
-                  ),
+                      foregroundStyle: boldTextStyle,
+                      borderColor: greenColor,
+                      borderWidth: 2),
                 ),
-              
               )
             ],
           ),
@@ -120,6 +143,7 @@ class _MorningPre2State extends State<MorningPre2> {
                 height: 60,
                 child: OutlinedButton(
                     onPressed: () {
+                      sendDataToFirebase();
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(

@@ -113,8 +113,8 @@ class _EveningPre2State extends State<EveningPre2> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Container(
-                width: 50,
-                height: 50,
+                width: 60,
+                height: 60,
                 child: OutlinedButton(
                     onPressed: () {
                       Navigator.pushReplacement(

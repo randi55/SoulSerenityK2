@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:soul_serenity/pages/evening/evening_pre1.dart';
 import 'package:soul_serenity/pages/login_page.dart';
 import 'package:soul_serenity/pages/morning/morning_pre1.dart';
+import 'package:soul_serenity/pages/profile/account_page.dart';
 import 'package:soul_serenity/theme.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -55,13 +56,10 @@ class _HomePageState extends State<HomePage> {
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
                       onTap: () {
-                        FirebaseAuth.instance.signOut().then((value) {
-                          print("Signed Out");
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginPage()));
-                        });
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AccountPage()));
                       },
                       child: Image.asset("assets/akun.png")),
                 ),

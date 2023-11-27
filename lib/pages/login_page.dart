@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:soul_serenity/pages/forgot_password.dart';
+import 'package:soul_serenity/pages/landing_page.dart';
 import 'package:soul_serenity/pages/signup_page.dart';
 import 'package:soul_serenity/theme.dart';
 import 'package:soul_serenity/pages/navbar.dart';
@@ -19,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
 
   signIn() async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
       Navigator.push(
@@ -67,10 +68,10 @@ class _LoginPageState extends State<LoginPage> {
                         // height: 55,
                         child: ElevatedButton(
                             onPressed: () {
-                              // Navigator.pushReplacement(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) => MorningPre2()));
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LandingPage()));
                             },
                             child: Image.asset(
                               "assets/back.png",

@@ -1,4 +1,7 @@
 import 'package:chips_choice/chips_choice.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:soul_serenity/pages/morning/morning_pre2.dart';
 import 'package:soul_serenity/theme.dart';
@@ -13,17 +16,69 @@ class MorningPre1 extends StatefulWidget {
 }
 
 class _MorningPre1State extends State<MorningPre1> {
-  int currentValue = 0;
+  // void savePercentage(int percentage) async {
+  //   // Buat referensi ke Firestore
+  //   CollectionReference mornPrep =
+  //       FirebaseFirestore.instance.collection('User');
 
-  int tag = 0;
-  List<String> tags = [];
-  List<String> options = [
-    '0%',
-    '25%',
-    '50%',
-    '75%',
-    '100%',
-  ];
+  //   // Simpan data ke Firestore
+  //   await mornPrep.doc().collection('mornP').add({
+  //     'percentage': '$percentage%',
+  //   });
+  // }
+
+  void main(int percentage) async {
+    WidgetsFlutterBinding.ensureInitialized();
+
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    // Menambahkan document baru ke subcollection userInfo
+    DocumentReference docRef = firestore
+        .collection('User')
+        .doc('ya0w3nM9GqYyPNfAO2iP');
+    // Mengisi data untuk document tersebut
+    docRef.collection('mornP').add({
+      'percentage': '$percentage%',
+    });
+  }
+//   void main(int percentage) async {
+//     WidgetsFlutterBinding.ensureInitialized();
+
+//     FirebaseFirestore firestore = FirebaseFirestore.instance;
+//     FirebaseAuth auth = FirebaseAuth.instance;
+//     User? user = auth.currentUser;
+
+//     if (user != null) {
+//         String userID = user.uid;
+//         print("Current user's ID: $userID");
+
+//         // Menambahkan document baru ke subcollection userInfo
+//         DocumentReference docRef = firestore
+//             .collection('User')
+//             .doc(userID);
+//         // Mengisi data untuk document tersebut
+//         docRef.collection('mornP').add({
+//       'percentage': '$percentage%',
+//         });
+//     } else {
+//         print("No user is currently signed in.");
+//     }
+// }
+
+  // CollectionReference _collectionRef =
+  //     FirebaseFirestore.instance.collection('eveRef');
+
+  // Future<void> getData() async {
+  //   // Get docs from collection reference
+  //   QuerySnapshot querySnapshot = await _collectionRef.get();
+
+  //   // Get data from docs and convert map to List
+  //   final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+
+  //   print(allData);
+  // }
+
+  int currentValue = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -55,38 +110,124 @@ class _MorningPre1State extends State<MorningPre1> {
           Text("How well did you sleep today?",
               style: boldTextStyle.copyWith(fontSize: 20, color: greenColor)),
           SizedBox(height: 40),
-      
-          Padding(
-              padding: EdgeInsets.all(0.0),
-              child: Column(
-                children: [
-                  ChipsChoice.single(
-                    value: tag,
-                    onChanged: (val) => setState(() => tag = val),
-                    choiceItems: C2Choice.listFrom(
-                        source: options, value: (i, v) => i, label: (i, v) => v),
-                    wrapped: true,
-                    choiceStyle: C2ChipStyle.toned(
-                      height: 50,
-                      borderStyle: BorderStyle.solid,
-                      borderRadius: BorderRadius.circular(50),
-                      backgroundColor: green2Color,
-                      backgroundOpacity: 1,
-                      borderWidth: 1,
-                      borderColor: greenColor,
-                      foregroundStyle: lightTextStyle,
-                      foregroundColor: greenColor,
-                      selectedStyle: C2ChipStyle(
-                          foregroundStyle: boldTextStyle,
-                          borderColor: greenColor,
-                          backgroundColor: greenColor,
-                          borderWidth: 2),
+          Center(
+            child: Container(
+              width: 400,
+              decoration: BoxDecoration(
+                  color: green2Color, borderRadius: BorderRadius.circular(50)),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: 70,
+                      height: 70,
+                      child: OutlinedButton(
+                          onPressed: () {
+                          },
+                          child: Text("0%",
+                              style: boldTextStyle.copyWith(fontSize: 11)),
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: greenColor, // Warna teks
+                            side: BorderSide(color: greenColor, width: 3),
+                            backgroundColor: green2Color, // Warna border
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                          )),
                     ),
-                  )
-                ],
+                    Container(
+                      width: 70,
+                      height: 70,
+                      child: OutlinedButton(
+                          onPressed: () {
+                            // savePercentage(25);
+                            main(25);
+                            // Navigator.pushReplacement(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => MorningPre2()));
+                          },
+                          child: Text("25%",
+                              style: boldTextStyle.copyWith(fontSize: 11)),
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: greenColor, // Warna teks
+                            side: BorderSide(color: greenColor, width: 3),
+                            backgroundColor: green2Color, // Warna border
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                          )),
+                    ),
+                    Container(
+                      width: 70,
+                      height: 70,
+                      child: OutlinedButton(
+                          onPressed: () {
+                            // savePercentage(50);
+                          },
+                          child: Text("50%",
+                              style: boldTextStyle.copyWith(fontSize: 11)),
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: greenColor, // Warna teks
+                            side: BorderSide(color: greenColor, width: 3),
+                            backgroundColor: green2Color, // Warna border
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                          )),
+                    ),
+                    Container(
+                      width: 70,
+                      height: 70,
+                      child: OutlinedButton(
+                          onPressed: () {
+                            // savePercentage(75);
+                          },
+                          child: Text("75%",
+                              style: boldTextStyle.copyWith(fontSize: 11)),
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: greenColor, // Warna teks
+                            side: BorderSide(color: greenColor, width: 3),
+                            backgroundColor: green2Color, // Warna border
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                          )),
+                    ),
+                    Container(
+                      width: 70,
+                      height: 70,
+                      child: OutlinedButton(
+                          onPressed: () {
+                            // savePercentage(100);
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MorningPre2()));
+                          },
+                          child: Text("100%",
+                              style: boldTextStyle.copyWith(fontSize: 11)),
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: greenColor, // Warna teks
+                            side: BorderSide(color: greenColor, width: 3),
+                            backgroundColor: green2Color, // Warna border
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                          )),
+                    ),
+                  ],
+                ),
               ),
             ),
+          ),
           SizedBox(height: 200),
+          ElevatedButton(
+            onPressed: () {},
+            child: Text('Activate Feeling Chip'),
+          ),
           Padding(
             padding: const EdgeInsets.only(right: 50.0),
             child: Row(
@@ -95,17 +236,6 @@ class _MorningPre1State extends State<MorningPre1> {
                 Container(
                   width: 60,
                   height: 60,
-                  // decoration: BoxDecoration(
-                  //   borderRadius: BorderRadius.circular(100),
-                  //   boxShadow: [
-                  //     BoxShadow(
-                  //       color: Colors.grey, // Warna shadow
-                  //       blurRadius: 10, // Jumlah blur
-                  //       offset: Offset(-2, -2),
-                  //       blurStyle: BlurStyle.inner // Offset shadow
-                  //     ),
-                  //   ],
-                  // ),
                   child: OutlinedButton(
                       onPressed: () {
                         Navigator.pushReplacement(

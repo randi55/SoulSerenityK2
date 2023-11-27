@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:soul_serenity/firebase_options.dart';
+import 'package:soul_serenity/pages/menu_page/explore_page.dart';
 import 'package:soul_serenity/pages/navbar.dart';
+import 'package:soul_serenity/pages/profile/change_pass_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
