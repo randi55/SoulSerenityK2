@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:soul_serenity/model/card_item.dart';
-import 'package:soul_serenity/model/card_widget.dart';
-import 'package:soul_serenity/model/description_page.dart';
 import 'package:soul_serenity/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:soul_serenity/pages/login_page.dart';
+import 'package:soul_serenity/model/card_item.dart';
+import 'package:soul_serenity/model/card_widget.dart';
+import 'package:soul_serenity/pages/description_page.dart';
 
 class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});
@@ -15,44 +15,6 @@ class ExplorePage extends StatefulWidget {
 
 class _ExplorePageState extends State<ExplorePage> {
   final TextEditingController _searchController = TextEditingController();
-  List<CardItem> allCards = [
-    CardItem(
-        'UK study confirms Mediterranean lifestyle benefits',
-        'By Heidi Godman',
-        'assets/image 1.png',
-        'Staying Healthy'),
-    CardItem('Denial: How it hurts, how it helps, and how to cope',
-        'By Heidi Godman', 'assets/image 2.png', 'Mind & Mood'),
-    CardItem('Invisible illness: More than meets the eye', 'By Maureen Salamon',
-        'assets/image 4.png', 'Mind & Mood'),
-    CardItem('Can you feel younger than your age?', 'By Matthew Solan',
-        'assets/image 5.png', 'Staying Healthy'),
-    CardItem('Sowing the seeds of better health', 'By Maureen Salamon',
-        'assets/image 6.png', 'Staying Healthy'),
-    CardItem('Is online gambling harming you?', 'By Matthew Solan',
-        'assets/image 7.png', 'Mind & Mood'),
-    CardItem(
-        'Blasting through mental health misperceptions',
-        'By Maureen Salamon',
-        'assets/image 8.png',
-        'Staying Healthy'),
-    CardItem('Denial: How it hurts, how it helps, and how to cope',
-        'By Heidi Godman', 'assets/explore_image/image 2.png', 'Mind & Mood'),
-    CardItem('Invisible illness: More than meets the eye', 'By Maureen Salamon',
-        'assets/explore_image/image 4.png', 'Mind & Mood'),
-    CardItem('Can you feel younger than your age?', 'By Matthew Solan',
-        'assets/explore_image/image 5.png', 'Staying Healthy'),
-    CardItem('Sowing the seeds of better health', 'By Maureen Salamon',
-        'assets/explore_image/image 6.png', 'Staying Healthy'),
-    CardItem('Is online gambling harming you?', 'By Matthew Solan',
-        'assets/explore_image/image 7.png', 'Mind & Mood'),
-    CardItem(
-        'Blasting through mental health misperceptions',
-        'By Maureen Salamon',
-        'assets/explore_image/image 8.png',
-        'Mind & Mood'),
-  ];
-  List<CardItem> filteredCards = [];
 
   @override
   void initState() {
@@ -67,7 +29,7 @@ class _ExplorePageState extends State<ExplorePage> {
       bool isAuthorMatch =
           card.author.toLowerCase().contains(query.toLowerCase());
       bool isThemeMatch =
-          card.theme.toLowerCase().contains(query.toLowerCase());
+          card.category.toLowerCase().contains(query.toLowerCase());
 
       return isTitleMatch || isAuthorMatch || isThemeMatch;
     }).toList();
