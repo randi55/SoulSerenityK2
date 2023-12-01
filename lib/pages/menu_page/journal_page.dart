@@ -47,17 +47,8 @@ class _JournalPageState extends State<JournalPage> {
         Image.asset("assets/journal.png",width: 200,),
         SizedBox(height: 10),
         //MORNING BUTTON
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset("assets/sun.png",width: 50,),
-            SizedBox(width: 10,),
-            Text("See your journal here",style: boldTextStyle.copyWith(color: greenColor,fontSize: 20),),
-            SizedBox(width: 10,),
-            Image.asset("assets/moon.png",width: 50,),
-          ],
-        ),
-        SizedBox(height: 20,),
+        Text("RECENT ENTRIES",style: boldTextStyle.copyWith(color: greenColor,fontSize: 20,letterSpacing: 6),),
+        SizedBox(height: 50,),
           Container(
             width: MediaQuery.of(context).size.width - 150,
             height: 90,
@@ -102,7 +93,7 @@ class _JournalPageState extends State<JournalPage> {
           SizedBox(height: 30),
           
           Container(
-            width: MediaQuery.of(context).size.width - 150,
+            width: MediaQuery.of(context).size.width - 140,
             height: 90,
             child: OutlinedButton(
               onPressed: () {

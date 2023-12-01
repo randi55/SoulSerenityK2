@@ -27,15 +27,15 @@ class _SignUpPageState extends State<SignUpPage> {
       Fluttertoast.showToast(
           msg: "You have succesfully created an account, Log In Now",
           gravity: ToastGravity.TOP,
+          webBgColor: "linear-gradient(to bottom, #1C665B, #4B997E)",
           timeInSecForIosWeb: 2);
 
       // Menambahkan detail akun
       addUserDetails();
-
-      
     } on FirebaseAuthException catch (error) {
       Fluttertoast.showToast(
         msg: error.message!,
+        webBgColor: "linear-gradient(to bottom, #1C665B, #4B997E)",
         gravity: ToastGravity.TOP,
         timeInSecForIosWeb: 2,
       );
@@ -49,7 +49,6 @@ class _SignUpPageState extends State<SignUpPage> {
       'email': _emailController.text,
     });
   }
-
 
   bool _secureText = true;
   showHide() {
@@ -270,7 +269,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                       ),
-                    ), 
+                    ),
                   ),
                 ),
                 SizedBox(height: 20.0),

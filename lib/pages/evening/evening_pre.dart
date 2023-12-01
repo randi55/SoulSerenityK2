@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:soul_serenity/pages/evening/evening_pre4.dart';
+import 'package:soul_serenity/pages/navbar.dart';
 import 'package:soul_serenity/theme.dart';
 
 class EveningPre extends StatefulWidget {
@@ -31,13 +32,15 @@ class _EveningPreState extends State<EveningPre> {
             Container(
               child: ElevatedButton(
                   onPressed: () {
-                    // Navigator.pop(context);
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => NavBar()));
                   },
                   child: Image.asset("assets/back.png"),
                   style: ElevatedButton.styleFrom(
                     foregroundColor: greenColor,
-                    backgroundColor: Color.fromRGBO(
-                        28, 102, 91, 1000), // ini warnanya masih salah
+                    backgroundColor: green2Color,// ini warnanya masih salah
                     shape: CircleBorder(),
                     minimumSize: Size(10, 60),
                   )),

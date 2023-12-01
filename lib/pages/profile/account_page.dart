@@ -44,8 +44,7 @@ class _AccountPageState extends State<AccountPage> {
                           child: Image.asset("assets/back.png"),
                           style: ElevatedButton.styleFrom(
                             foregroundColor: greenColor,
-                            backgroundColor: Color.fromRGBO(
-                                28, 102, 91, 1000), // ini warnanya masih salah
+                            backgroundColor: green2Color, // ini warnanya masih salah
                             shape: CircleBorder(),
                             minimumSize: Size(10, 60),
                           )),
@@ -68,18 +67,9 @@ class _AccountPageState extends State<AccountPage> {
                       color: green2Color, borderRadius: BorderRadius.circular(10)),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Basic Information",
-                          style: boldTextStyle.copyWith(color: greenColor),
-                        ),
-                        Icon(
-                          Icons.edit,
-                          color: greenColor,
-                        )
-                      ],
+                    child: Text(
+                      "Basic Information",
+                      style: boldTextStyle.copyWith(color: greenColor),
                     ),
                   )),
               StreamBuilder(
@@ -424,51 +414,6 @@ class _AccountPageState extends State<AccountPage> {
                                   MaterialPageRoute(
                                       builder: (context) => LoginPage()));
                             });
-                          },
-                          child: Image.asset(
-                            "assets/next.png",
-                            width: 10,
-                            color: greenColor,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.restore_from_trash_sharp,
-                            color: greenColor,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            "Delete Account",
-                            style: regulerTextStyle.copyWith(color: greenColor),
-                          ),
-                        ],
-                      ),
-                    ),
-                    MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: GestureDetector(
-                          onTap: () {
-                            // Navigator.pushReplacement(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => PrivacyPage()));
                           },
                           child: Image.asset(
                             "assets/next.png",

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:soul_serenity/pages/menu_page/explore_page.dart';
 import 'package:soul_serenity/pages/menu_page/home_page.dart';
 import 'package:soul_serenity/pages/menu_page/journal_page.dart';
-import 'package:soul_serenity/pages/menu_page/society_page.dart';
 import 'package:soul_serenity/theme.dart';
 
 class NavBar extends StatefulWidget {
@@ -17,7 +16,6 @@ class _NavBar extends State<NavBar> {
   List<Widget> body = [
     HomePage(),
     ExplorePage(),
-    SocietyPage(),
     JournalPage(),
   ];
 
@@ -60,11 +58,11 @@ class _NavBar extends State<NavBar> {
                 activeIcon: Image.asset("assets/rocket.png"),
                 icon: Image.asset('assets/unrocket.png'),
               ),
-              BottomNavigationBarItem(
-                label: "Community",
-                activeIcon: Image.asset("assets/users.png"),
-                icon: Image.asset('assets/unusers.png'),
-              ),
+              // BottomNavigationBarItem(
+              //   label: "Community",
+              //   activeIcon: Image.asset("assets/users.png"),
+              //   icon: Image.asset('assets/unusers.png'),
+              // ),
               BottomNavigationBarItem(
                 label: "Journal",
                 activeIcon: Image.asset("assets/document.png"),

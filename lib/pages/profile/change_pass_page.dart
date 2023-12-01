@@ -64,8 +64,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                         child: Image.asset("assets/back.png"),
                         style: ElevatedButton.styleFrom(
                           foregroundColor: greenColor,
-                          backgroundColor: Color.fromRGBO(
-                              28, 102, 91, 1000), // ini warnanya masih salah
+                          backgroundColor: green2Color, // ini warnanya masih salah
                           shape: CircleBorder(),
                           minimumSize: Size(10, 60),
                         )),

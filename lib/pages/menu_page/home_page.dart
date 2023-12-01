@@ -1,5 +1,7 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:soul_serenity/pages/evening/evening_pre.dart';
 import 'package:soul_serenity/pages/morning/morning_pre.dart';
 import 'package:soul_serenity/pages/profile/account_page.dart';
@@ -12,7 +14,7 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
- 
+
 class _HomePageState extends State<HomePage> {
   DateTime today = DateTime.now();
   void _onDaySelected(DateTime day, DateTime focusedDay) {
@@ -21,21 +23,11 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  int tag = 1;
-  List<String> tags = [];
-  List<String> options = [
-    '☹️',
-    '🙁',
-    '😐',
-    '🙂',
-    '😊',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-        //TOP BAR
+      //TOP BAR
       child: Column(
         children: [
           Padding(
@@ -65,35 +57,114 @@ class _HomePageState extends State<HomePage> {
           ),
           //TOP BAR
 
-          Padding(
-            padding: EdgeInsets.all(0.0),
-            child: Column(
-              children: [
-                ChipsChoice.single(
-                  value: tag,
-                  onChanged: (val) => setState(() => tag = val),
-                  choiceItems: C2Choice.listFrom(
-                      source: options, value: (i, v) => i, label: (i, v) => v),
-                  wrapped: true,
-                  choiceStyle: C2ChipStyle.toned(
-                    height: 25,
-                    borderStyle: BorderStyle.solid,
-                    borderRadius: BorderRadius.circular(50),
-                    backgroundColor: green2Color,
-                    backgroundOpacity: 1,
-                    borderWidth: 1,
-                    borderColor: greenColor,
-                    foregroundStyle: lightTextStyle,
-                    foregroundColor: greenColor,
-                    selectedStyle: C2ChipStyle(
-                        foregroundStyle: boldTextStyle,
-                        borderColor: greenColor,
-                        borderWidth: 2),
-                  ),
-                )
-              ],
+          // MOOD BUTTON
+          Container(
+            width: 350,
+            decoration: BoxDecoration(
+                color: green2Color, borderRadius: BorderRadius.circular(20)),
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                          onTap: () {
+                            Fluttertoast.showToast(
+                              msg:
+                                  "I know it's tough right now, but remember that clouds eventually clear, and the sun will shine again. Reach out to someone you trust and let them be your support.",
+                              toastLength: Toast.LENGTH_LONG,
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIosWeb: 3,
+                              textColor: Colors.white,
+                              webBgColor:
+                                  "linear-gradient(to bottom, #1C665B, #4B997E)",
+                              webPosition: "center",
+                              fontSize: 16.0,
+                            );
+                          },
+                          child: Image.asset("assets/emote1.png",width: 30))),
+                  MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                          onTap: () {
+                            Fluttertoast.showToast(
+                              msg:
+                                  "Disappointments are a part of life, but they don't define you. Use this moment to reflect, learn, and grow stronger. Tomorrow is a new opportunity.",
+                              toastLength: Toast.LENGTH_LONG,
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIosWeb: 5,
+                              textColor: Colors.white,
+                              webBgColor:
+                                  "linear-gradient(to bottom, #1C665B, #4B997E)",
+                              webPosition: "center",
+                              fontSize: 16.0,
+                            );
+                          },
+                          child: Image.asset("assets/emote2.png",width: 30))),
+                  MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                          onTap: () {
+                            Fluttertoast.showToast(
+                              msg:
+                                  "In moments of neutrality, find peace in the stillness. Take a deep breath and appreciate the simple joys around you. Life is a journey, and every step is valuable.",
+                              toastLength: Toast.LENGTH_LONG,
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIosWeb: 5,
+                              textColor: Colors.white,
+                              webBgColor:
+                                  "linear-gradient(to bottom, #1C665B, #4B997E)",
+                              webPosition: "center",
+                              fontSize: 16.0,
+                            );
+                          },
+                          child: Image.asset("assets/emote3.png",width: 30))),
+                  MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      onHover: (e) {
+                        Container();
+                      },
+                      child: GestureDetector(
+                          onTap: () {
+                            Fluttertoast.showToast(
+                              msg:
+                                  "Embrace the contentment you feel now. Celebrate your achievements, big or small. You've earned this moment of peace. Continue to savor the present.",
+                              toastLength: Toast.LENGTH_LONG,
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIosWeb: 5,
+                              textColor: Colors.white,
+                              webBgColor:
+                                  "linear-gradient(to bottom, #1C665B, #4B997E)",
+                              webPosition: "center",
+                              fontSize: 16.0,
+                            );
+                          },
+                          child: Image.asset("assets/emote4.png",width: 30))),
+                  MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                          onTap: () {
+                            Fluttertoast.showToast(
+                              msg:
+                                  "Your happiness is a testament to your resilience. Cherish these moments, surround yourself with positivity, and let the joy radiate within and beyond. You deserve it.",
+                              toastLength: Toast.LENGTH_LONG,
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIosWeb: 5,
+                              textColor: Colors.white,
+                              webBgColor:
+                                  "linear-gradient(to bottom, #1C665B, #4B997E)",
+                              webPosition: "center",
+                              fontSize: 16.0,
+                            );
+                          },
+                          child: Image.asset("assets/emote5.png",width: 30))),
+                ],
+              ),
             ),
           ),
+          // MOOD BUTTON
 
           // CALENDAR
           Column(
@@ -114,6 +185,8 @@ class _HomePageState extends State<HomePage> {
                         titleCentered: true,
                         titleTextStyle:
                             boldTextStyle.copyWith(color: Colors.white),
+                            
+                        
                         decoration: BoxDecoration(
                             color: greenColor,
                             borderRadius: BorderRadius.only(
@@ -155,7 +228,7 @@ class _HomePageState extends State<HomePage> {
           SizedBox(height: 10),
           //MORNING BUTTON
           Container(
-            width: MediaQuery.of(context).size.width - 220,
+            width: MediaQuery.of(context).size.width - 210,
             height: 90,
             child: OutlinedButton(
               onPressed: () {

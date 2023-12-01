@@ -14,7 +14,7 @@ class _AboutPageState extends State<AboutPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+        padding: const EdgeInsets.only(left: 16.0, right: 16.0,top: 15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -34,8 +34,7 @@ class _AboutPageState extends State<AboutPage> {
                         child: Image.asset("assets/back.png"),
                         style: ElevatedButton.styleFrom(
                           foregroundColor: greenColor,
-                          backgroundColor: Color.fromRGBO(
-                              28, 102, 91, 1000), // ini warnanya masih salah
+                          backgroundColor: green2Color, // ini warnanya masih salah
                           shape: CircleBorder(),
                           minimumSize: Size(10, 60),
                         )),

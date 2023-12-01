@@ -12,6 +12,7 @@ class ExploreCardWidget extends StatelessWidget {
     return Card(
       margin: EdgeInsets.only(left: 30, right: 30, top: 10),
       clipBehavior: Clip.antiAlias,
+      color: green2Color,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12.0),
       ),
@@ -32,12 +33,12 @@ class ExploreCardWidget extends StatelessWidget {
               children: <Widget>[
                 Text(
                   card.title,
-                  style: mediumTextStyle.copyWith(fontWeight: FontWeight.w600),
+                  style: mediumTextStyle.copyWith(fontWeight: FontWeight.w600,color: greenColor),
                 ),
                 const SizedBox(height: 0),
                 Text(
                   card.author,
-                  style: lightTextStyle.copyWith(fontWeight: FontWeight.w100),
+                  style: lightTextStyle.copyWith(fontWeight: FontWeight.w100,color: greenColor),
                 ),
                 const SizedBox(height: 5),
               ],

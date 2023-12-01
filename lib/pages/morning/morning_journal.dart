@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:soul_serenity/pages/morning/edit_morning_journal.dart';
 import 'package:soul_serenity/pages/navbar.dart';
 import 'package:soul_serenity/theme.dart';
 
@@ -28,22 +29,19 @@ class _MorningJournalState extends State<MorningJournal> {
               Container(
                 child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NavBar()));
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => NavBar()));
                     },
                     child: Image.asset("assets/back.png"),
                     style: ElevatedButton.styleFrom(
                       foregroundColor: greenColor,
-                      backgroundColor: Color.fromRGBO(
-                          28, 102, 91, 1000), // ini warnanya masih salah
+                      backgroundColor: green2Color, // ini warnanya masih salah
                       shape: CircleBorder(),
                       minimumSize: Size(10, 60),
                     )),
               ),
               Text(
-                "Morning Journal ☀️",
+                "Morning Journal",
                 style: boldTextStyle.copyWith(fontSize: 16, color: greenColor),
               ),
               Image.asset("assets/logo.png", width: 50),
@@ -58,7 +56,7 @@ class _MorningJournalState extends State<MorningJournal> {
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              color: greenColor,
+              color: green3Color,
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
@@ -84,31 +82,47 @@ class _MorningJournalState extends State<MorningJournal> {
                                 as Map<String, dynamic>;
                         return Padding(
                           padding: const EdgeInsets.all(20.0),
-                          child: Column(
-                            children: [
-                              Container(
-                                  height: 50,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => EditMorningJournal(
+                                          document: document,
+                                          id: snapshot.data.docs[index].id)));
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 70,
                                   width: MediaQuery.of(context).size.width,
                                   decoration: BoxDecoration(
                                       color: green2Color,
+                                      border: Border.all(color: greenColor),
                                       borderRadius: BorderRadius.circular(20)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(15.0),
-                                    child: Row(
-                                      children: [
-                                        Image.asset(
-                                          "assets/sun.png",
-                                          width: 50,
-                                        ),
-                                        Text(
-                                          document["mainFocus"],
-                                          style: boldTextStyle.copyWith(
-                                              color: greenColor),
-                                        ),
-                                      ],
+                                  child: ListTile(
+                                    leading: Image.asset("assets/sun1.png",
+                                        width: 30),
+                                    title: Text(
+                                      document["mainFocus"],
+                                      style: boldTextStyle.copyWith(
+                                          color: greenColor, fontSize: 16),
                                     ),
-                                  ))
-                            ],
+                                    subtitle: Text(
+                                      document['plan'],
+                                      style: regulerTextStyle.copyWith(
+                                          color: greenColor, fontSize: 14),
+                                    ),
+                                    trailing: Text(
+                                      document['percentage'],
+                                      style: boldTextStyle.copyWith(
+                                          color: greenColor, fontSize: 14),
+                                    ),
+                                    mouseCursor: SystemMouseCursors.click,
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         );
                       },

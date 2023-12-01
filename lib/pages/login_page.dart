@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
 
   signIn() async {
     try {
-       await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim());
       Navigator.push(
@@ -30,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
     } on FirebaseAuthException {
       Fluttertoast.showToast(
         msg: "Incorrect Email or Password",
+        webBgColor: "linear-gradient(to bottom, #1C665B, #4B997E)",
         gravity: ToastGravity.TOP,
         timeInSecForIosWeb: 2,
       );
