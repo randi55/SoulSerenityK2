@@ -5,6 +5,7 @@ import 'package:soul_serenity/theme.dart';
 import 'package:soul_serenity/model/card_item.dart';
 import 'package:soul_serenity/model/card_widget.dart';
 
+
 class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});
 
