@@ -105,11 +105,15 @@ class _MorningJournalState extends State<MorningJournal> {
                                         width: 30),
                                     title: Text(
                                       document["mainFocus"],
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
                                       style: boldTextStyle.copyWith(
                                           color: greenColor, fontSize: 16),
                                     ),
                                     subtitle: Text(
                                       document['plan'],
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
                                       style: regulerTextStyle.copyWith(
                                           color: greenColor, fontSize: 14),
                                     ),

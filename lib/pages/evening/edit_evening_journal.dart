@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:soul_serenity/pages/evening/evening_journal.dart';
 import 'package:soul_serenity/theme.dart';
@@ -57,16 +58,20 @@ class _EditEveningJournalState extends State<EditEveningJournal> {
                     minimumSize: Size(10, 60),
                   )),
             ),
-            SizedBox(width: 10),
-            Text(
-              "Edit and Delete Evening Journal",
-              style: boldTextStyle.copyWith(color: greenColor, fontSize: 20),
+            SizedBox(width: 10.sp),
+            Container(
+              width: MediaQuery.of(context).size.width * .7,
+              child: Text(
+                "Edit and Delete Evening Journal",
+                style:
+                    boldTextStyle.copyWith(color: greenColor, fontSize: 20.sp),
+              ),
             ),
           ],
         ),
       ),
       SizedBox(
-        height: 40,
+        height: 40.sp,
       ),
       label("How well rested did you feel today?"),
       Row(
@@ -79,7 +84,7 @@ class _EditEveningJournalState extends State<EditEveningJournal> {
         ],
       ),
       SizedBox(
-        height: 20,
+        height: 20.sp,
       ),
       label("How would you describe how you’re feeling today?"),
       Row(
@@ -101,12 +106,12 @@ class _EditEveningJournalState extends State<EditEveningJournal> {
         ],
       ),
       SizedBox(
-        height: 20,
+        height: 20.sp,
       ),
       label("Write a short summary of your day."),
       textField(context),
       SizedBox(
-        height: 20,
+        height: 20.sp,
       ),
       Padding(
         padding: const EdgeInsets.only(right: 50.0, left: 50.0),
@@ -114,13 +119,13 @@ class _EditEveningJournalState extends State<EditEveningJournal> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              width: 130,
-              height: 60,
+              width: 130.sp,
+              height: 60.sp,
               child: ElevatedButton(
                   onPressed: () {
                     FirebaseFirestore.instance
                         .collection("evePrep")
-                        .doc(widget.id) 
+                        .doc(widget.id)
                         .delete()
                         .then((value) {
                       Navigator.pushReplacement(
@@ -132,7 +137,8 @@ class _EditEveningJournalState extends State<EditEveningJournal> {
                         msg:
                             "You have successfully deleted your Evening Journal",
                         gravity: ToastGravity.TOP,
-                        webBgColor: "linear-gradient(to bottom, #1C665B, #4B997E)",
+                        webBgColor:
+                            "linear-gradient(to bottom, #1C665B, #4B997E)",
                         timeInSecForIosWeb: 2);
                     Navigator.pushReplacement(
                         context,
@@ -142,8 +148,13 @@ class _EditEveningJournalState extends State<EditEveningJournal> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset("assets/delete.png",width: 30,),
-                      SizedBox(width: 5.0,),
+                      Image.asset(
+                        "assets/delete.png",
+                        width: 30.sp,
+                      ),
+                      SizedBox(
+                        width: 5.0.sp,
+                      ),
                       Text(
                         "Delete",
                         style: boldTextStyle.copyWith(color: greenColor),
@@ -159,8 +170,8 @@ class _EditEveningJournalState extends State<EditEveningJournal> {
                   )),
             ),
             Container(
-              width: 130,
-              height: 60,
+              width: 130.sp,
+              height: 60.sp,
               child: ElevatedButton(
                   onPressed: () {
                     FirebaseFirestore.instance
@@ -175,7 +186,8 @@ class _EditEveningJournalState extends State<EditEveningJournal> {
                         msg:
                             "You have successfully edited your Evening Journal",
                         gravity: ToastGravity.TOP,
-                        webBgColor: "linear-gradient(to bottom, #1C665B, #4B997E)",
+                        webBgColor:
+                            "linear-gradient(to bottom, #1C665B, #4B997E)",
                         timeInSecForIosWeb: 2);
                     Navigator.pushReplacement(
                         context,
@@ -185,16 +197,22 @@ class _EditEveningJournalState extends State<EditEveningJournal> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset("assets/edit.png",width: 30,),
-                      SizedBox(width: 5,),
+                      Image.asset(
+                        "assets/edit.png",
+                        width: 30.sp,
+                      ),
+                      SizedBox(
+                        width: 5.sp,
+                      ),
                       Text(
                         "Edit",
-                        style: boldTextStyle.copyWith(color: green2Color),
+                        style: boldTextStyle.copyWith(
+                            color: green2Color, fontSize: 12.sp),
                       ),
                     ],
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: greenColor, 
+                    backgroundColor: greenColor,
                     elevation: 3,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(100),
@@ -224,7 +242,7 @@ class _EditEveningJournalState extends State<EditEveningJournal> {
           side: BorderSide.none,
           label: Text(
             label,
-            style: boldTextStyle.copyWith(color: greenColor),
+            style: boldTextStyle.copyWith(color: greenColor, fontSize: 12.sp),
           ),
           labelPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 3.8),
         ),
@@ -249,9 +267,9 @@ class _EditEveningJournalState extends State<EditEveningJournal> {
           side: BorderSide.none,
           label: Text(
             label,
-            style: boldTextStyle.copyWith(color: greenColor),
+            style: boldTextStyle.copyWith(color: greenColor, fontSize: 9.sp),
           ),
-          labelPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 3.8),
+          labelPadding: EdgeInsets.symmetric(horizontal: 4.3, vertical: 1.8),
         ),
       ),
     );
@@ -261,13 +279,14 @@ class _EditEveningJournalState extends State<EditEveningJournal> {
     return Padding(
       padding: const EdgeInsets.only(left: 20, top: 10),
       child: Container(
-        height: 200,
+        height: 200.sp,
         width: MediaQuery.of(context).size.width - 50,
         decoration: BoxDecoration(),
         child: TextFormField(
             controller: _summaryController,
             maxLines: 10,
-            style: regulerTextStyle.copyWith(color: greenColor, fontSize: 14),
+            style:
+                regulerTextStyle.copyWith(color: greenColor, fontSize: 14.sp),
             decoration: InputDecoration(
               hintText: 'Start Writing...',
               hintStyle: lightTextStyle.copyWith(
@@ -293,6 +312,6 @@ Widget label(String label) {
   return Padding(
     padding: const EdgeInsets.only(left: 20),
     child: Text(label,
-        style: boldTextStyle.copyWith(color: greenColor, fontSize: 16)),
+        style: boldTextStyle.copyWith(color: greenColor, fontSize: 16.sp)),
   );
 }

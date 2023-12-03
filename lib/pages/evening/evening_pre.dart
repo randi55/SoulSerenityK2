@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:soul_serenity/pages/evening/evening_pre4.dart';
 import 'package:soul_serenity/pages/navbar.dart';
 import 'package:soul_serenity/theme.dart';
@@ -32,29 +33,32 @@ class _EveningPreState extends State<EveningPre> {
             Container(
               child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => NavBar()));
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => NavBar()));
                   },
                   child: Image.asset("assets/back.png"),
                   style: ElevatedButton.styleFrom(
                     foregroundColor: greenColor,
-                    backgroundColor: green2Color,// ini warnanya masih salah
+                    backgroundColor: green2Color, // ini warnanya masih salah
                     shape: CircleBorder(),
                     minimumSize: Size(10, 60),
                   )),
             ),
             SizedBox(width: 10),
-            Text(
-              "End your evening with reflection 🌙",
-              style: boldTextStyle.copyWith(color: greenColor, fontSize: 20),
+            Container(
+              width: MediaQuery.of(context).size.width * .7,
+              child: Text(
+                "End your evening with reflection 🌙",
+                textAlign: TextAlign.center,
+                style:
+                    boldTextStyle.copyWith(color: greenColor, fontSize: 20.sp),
+              ),
             ),
           ],
         ),
       ),
       SizedBox(
-        height: 40,
+        height: 40.sp,
       ),
       label("How well rested did you feel today?"),
       Row(
@@ -67,7 +71,7 @@ class _EveningPreState extends State<EveningPre> {
         ],
       ),
       SizedBox(
-        height: 20,
+        height: 20.sp,
       ),
       label("How would you describe how you’re feeling today?"),
       Row(
@@ -89,12 +93,12 @@ class _EveningPreState extends State<EveningPre> {
         ],
       ),
       SizedBox(
-        height: 20,
+        height: 20.sp,
       ),
       label("Write a short summary of your day."),
       textField(context),
       SizedBox(
-        height: 20,
+        height: 20.sp,
       ),
       Padding(
         padding: const EdgeInsets.only(right: 50.0),
@@ -102,8 +106,8 @@ class _EveningPreState extends State<EveningPre> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              width: 60,
-              height: 60,
+              width: 60.sp,
+              height: 60.sp,
               child: OutlinedButton(
                   onPressed: () {
                     FirebaseFirestore.instance.collection("evePrep").add({
@@ -111,10 +115,8 @@ class _EveningPreState extends State<EveningPre> {
                       "descFeeling": descFeeling,
                       "summary": _summaryController.text
                     });
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => EveningPre4()));
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => EveningPre4()));
                   },
                   child: Image.asset("assets/next.png"),
                   style: OutlinedButton.styleFrom(
@@ -149,7 +151,7 @@ class _EveningPreState extends State<EveningPre> {
           side: BorderSide.none,
           label: Text(
             label,
-            style: boldTextStyle.copyWith(color: greenColor),
+            style: boldTextStyle.copyWith(color: greenColor, fontSize: 12.sp),
           ),
           labelPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 3.8),
         ),
@@ -174,50 +176,51 @@ class _EveningPreState extends State<EveningPre> {
           side: BorderSide.none,
           label: Text(
             label,
-            style: boldTextStyle.copyWith(color: greenColor),
+            style: boldTextStyle.copyWith(color: greenColor, fontSize: 9.sp),
           ),
-          labelPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 3.8),
+          labelPadding: EdgeInsets.symmetric(horizontal: 4.3, vertical: 1.8),
         ),
       ),
     );
   }
+
   Widget textField(BuildContext context) {
-  return Padding(
-    padding: const EdgeInsets.only(left: 20, top: 10),
-    child: Container(
-      height: 200,
-      width: MediaQuery.of(context).size.width - 50,
-      decoration: BoxDecoration(),
-      child: TextFormField(
-          controller: _summaryController,
-          maxLines: 10,
-          style: regulerTextStyle.copyWith(color: greenColor, fontSize: 14),
-          decoration: InputDecoration(
-            hintText: 'Start Writing...',
-            hintStyle: lightTextStyle.copyWith(
-                color: greenColor), // Text yang muncul ketika TextField kosong
-            border: OutlineInputBorder(
-              borderSide: BorderSide(color: greenColor),
-              borderRadius: BorderRadius.circular(25.0),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: greenColor),
-              borderRadius: BorderRadius.circular(25.0),
-            ),
-            filled: true,
-            fillColor: green2Color,
-          )),
-    ),
-  );
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, top: 10),
+      child: Container(
+        height: 200.sp,
+        width: MediaQuery.of(context).size.width - 50,
+        decoration: BoxDecoration(),
+        child: TextFormField(
+            controller: _summaryController,
+            maxLines: 10,
+            style:
+                regulerTextStyle.copyWith(color: greenColor, fontSize: 14.sp),
+            decoration: InputDecoration(
+              hintText: 'Start Writing...',
+              hintStyle: lightTextStyle.copyWith(
+                  color:
+                      greenColor), // Text yang muncul ketika TextField kosong
+              border: OutlineInputBorder(
+                borderSide: BorderSide(color: greenColor),
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: greenColor),
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              filled: true,
+              fillColor: green2Color,
+            )),
+      ),
+    );
+  }
 }
-}
-
-
 
 Widget label(String label) {
   return Padding(
     padding: const EdgeInsets.only(left: 20),
     child: Text(label,
-        style: boldTextStyle.copyWith(color: greenColor, fontSize: 16)),
+        style: boldTextStyle.copyWith(color: greenColor, fontSize: 16.sp)),
   );
 }

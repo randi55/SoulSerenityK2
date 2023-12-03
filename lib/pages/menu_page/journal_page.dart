@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:soul_serenity/pages/evening/evening_journal.dart';
 import 'package:soul_serenity/pages/morning/morning_journal.dart';
 import 'package:soul_serenity/pages/profile/account_page.dart';
@@ -12,7 +13,6 @@ class JournalPage extends StatefulWidget {
 }
 
 class _JournalPageState extends State<JournalPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,114 +24,121 @@ class _JournalPageState extends State<JournalPage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset("assets/logo.png", width: 50),
+              Image.asset("assets/logo.png", width: 40.sp),
               Text(
                 "Journal",
-                style: boldTextStyle.copyWith(fontSize: 16, color: greenColor),
+                style:
+                    boldTextStyle.copyWith(fontSize: 16.sp, color: greenColor),
               ),
               MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AccountPage()));
-                    },
-                    child: Image.asset("assets/akun.png")),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => AccountPage()));
+                  },
+                  child: Image.asset(
+                    "assets/akun.png",
+                    width: 50.sp,
+                  ),
+                ),
               ),
             ],
           ),
         ),
         //TOP BAR
-        Image.asset("assets/journal.png",width: 200,),
-        SizedBox(height: 10),
+        SizedBox(
+          height: 50.sp,
+        ),
+        Image.asset(
+          "assets/journal.png",
+          width: 200.sp,
+        ),
+        SizedBox(
+          height: 90.sp,
+        ),
+        Text(
+          "RECENT ENTRIES",
+          style: boldTextStyle.copyWith(
+              color: greenColor, fontSize: 12.sp, letterSpacing: 4),
+        ),
+        SizedBox(height: 5.sp),
         //MORNING BUTTON
-        Text("RECENT ENTRIES",style: boldTextStyle.copyWith(color: greenColor,fontSize: 20,letterSpacing: 6),),
-        SizedBox(height: 50,),
-          Container(
-            width: MediaQuery.of(context).size.width - 150,
-            height: 90,
-            child: OutlinedButton(
-              onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => MorningJournal()));
-              },
-              child: Row(
-                children: [
-                  Image.asset("assets/morning.png", width: 80),
-                  SizedBox(width: 8),
-                  Column(
-                    children: [
-                      SizedBox(height: 20),
-                      Text(
-                        "Morning Journal",
-                        style: boldTextStyle,
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        "See your morning journal here",
-                        style: lightTextStyle,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              style: OutlinedButton.styleFrom(
-                foregroundColor: greenColor, // Warna teks
-                side: BorderSide(color: greenColor, width: 2),
-                backgroundColor: green2Color, // Warna border
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
+        Container(
+          width: 250.sp,
+          height: 70.sp,
+          child: OutlinedButton(
+            onPressed: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => MorningJournal()));
+            },
+            child: Row(
+              children: [
+                Image.asset("assets/morning.png", width: 50.sp),
+                Column(
+                  children: [
+                    SizedBox(height: 18.sp),
+                    Text(
+                      "Morning Journal",
+                      style: boldTextStyle.copyWith(fontSize: 11.sp),
+                    ),
+                    Text(
+                      "See your morning journal here",
+                      style: lightTextStyle.copyWith(fontSize: 10.sp),
+                    ),
+                  ],
                 ),
+              ],
+            ),
+            style: OutlinedButton.styleFrom(
+              foregroundColor: greenColor, // Warna teks
+              side: BorderSide(color: greenColor, width: 2),
+              backgroundColor: green2Color, // Warna border
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
               ),
             ),
           ),
-          // MORNING BUTTON
-
-          //EVENING BUTTON
-          SizedBox(height: 30),
-          
-          Container(
-            width: MediaQuery.of(context).size.width - 140,
-            height: 90,
-            child: OutlinedButton(
-              onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => EveningJournal()));
-              },
-              child: Row(
-                children: [
-                  SizedBox(width: 25),
-                  Column(
-                    children: [
-                      SizedBox(height: 20),
-                      Text(
-                        "Evening Journal",
-                        style: boldTextStyle,
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        "See your evening journal here",
-                        style: lightTextStyle,
-                      ),
-                    ],
-                  ),
-                  SizedBox(width: 8),
-                  Image.asset("assets/evening.png", width: 60),
-                ],
-              ),
-              style: OutlinedButton.styleFrom(
-                foregroundColor: greenColor, // Warna teks
-                side: BorderSide(color: greenColor, width: 2),
-                backgroundColor: green2Color, // Warna border
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
+        ),
+        // MORNING BUTTON
+        SizedBox(height: 10.sp),
+        //EVENING BUTTON
+        Container(
+          width: 250.sp,
+          height: 70.sp,
+          child: OutlinedButton(
+            onPressed: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => EveningJournal()));
+            },
+            child: Row(
+              children: [
+                Column(
+                  children: [
+                    SizedBox(height: 18.sp),
+                    Text(
+                      "Evening Journal",
+                      style: boldTextStyle.copyWith(fontSize: 11.sp),
+                    ),
+                    Text("See your evening journal here",
+                        style: lightTextStyle.copyWith(fontSize: 10.sp)),
+                  ],
                 ),
+                SizedBox(width: 8.sp),
+                Image.asset("assets/evening.png", width: 50.sp),
+              ],
+            ),
+            style: OutlinedButton.styleFrom(
+              foregroundColor: greenColor, // Warna teks
+              side: BorderSide(color: greenColor, width: 2),
+              backgroundColor: green2Color, // Warna border
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
               ),
             ),
           ),
-          //EVENING BUTTON
+        ),
+        //EVENING BUTTON
       ])),
     );
   }

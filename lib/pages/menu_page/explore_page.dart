@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:soul_serenity/model/description_page.dart';
 import 'package:soul_serenity/pages/profile/account_page.dart';
 import 'package:soul_serenity/theme.dart';
 import 'package:soul_serenity/model/card_item.dart';
 import 'package:soul_serenity/model/card_widget.dart';
-
 
 class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});
@@ -60,7 +60,7 @@ class _ExplorePageState extends State<ExplorePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.asset("assets/logo.png", width: 50),
+                  Image.asset("assets/logo.png", width: 38.sp),
                   Text(
                     "Explore",
                     style:
@@ -70,12 +70,15 @@ class _ExplorePageState extends State<ExplorePage> {
                     cursor: SystemMouseCursors.click,
                     child: GestureDetector(
                         onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AccountPage()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AccountPage()));
                         },
-                        child: Image.asset("assets/akun.png")),
+                        child: Image.asset(
+                          "assets/akun.png",
+                          width: 50.sp,
+                        )),
                   ),
                 ],
               ),
@@ -104,7 +107,8 @@ class _ExplorePageState extends State<ExplorePage> {
                         icon: Icon(Icons.search_sharp),
                         hintText: "Search",
                         hintStyle: regulerTextStyle.copyWith(
-                            color: greenColor.withOpacity(0.5), fontSize: 14)),
+                            color: greenColor.withOpacity(0.5),
+                            fontSize: 14.sp)),
                   ),
                 ),
               ),
