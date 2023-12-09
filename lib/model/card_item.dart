@@ -101,5 +101,53 @@ List<CardItem> allCards = [
       'assets/explore_image/image 16.png',
       'Mind & Mood',
       'Brittany Jordan-Arthur was at loggerheads with her 7-year-old daughter one recent morning. The little girl simply did not want to head out the door to summer camp, finding any and all excuses to hang back. But instead of expressing exasperation or annoyance — knowing that would make her daughter dig in her heels even more — Jordan-Arthur, a psychologist at Harvard-affiliated McLean Hospital, decided to use a valuable communication technique: validation. Like many skills, the more you practice validation, the easier it becomes to apply when it`s most needed. Here`s what to know and do. What is validation? An approach that can help people feel heard and understood, validation is especially useful when navigating emotionally charged situations. Validating someone shows you understand their feelings and point of view, even when you disagree. It establishes trust, helping the other person feel supported and open to discussing solutions. And that`s precisely what happened in Jordan-Arthur`s stalemate with her daughter."I just sat with her and said, `You really don`t want to go.` It was a great example of saying, `I hear you,` and ultimately I didn`t tell her she had to go or why — she came to that conclusion herself," Jordan-Arthur says. "We walked out the door without all the need for explanations."'),
+  CardItem(
+      'Regular physical activity can boost mood',
+      'Maureen Salamon',
+      'assets/explore_image/image 17.png',
+      'Mind & Mood',
+      'Exercising regularly can improve symptoms of mild to moderate depression as well as anxiety and psychological distress, a review of many prior published studies suggests. The analysis, published online Feb. 16, 2023, by the British Journal of Sports Medicine, used 97 earlier research reviews involving more than 1,000 trials with a total of 128,119 people. Researchers compared the effects of exercise to standard care across a wide range of adults, including healthy people, those with diagnosed mental health disorders, and people with chronic diseases.'),
+  CardItem(
+      'Man`s best (health) friend',
+      'Matthew Solan',
+      'assets/explore_image/image 18.png',
+      'STAYING HEALTHY',
+      'The saying goes that you can`t teach an old dog new tricks. But a new dog can teach older adults how to stay active and healthy."Owning a dog can be one of the best ways to manage many health issues older adults face," says Dr. Beth Frates, director of lifestyle medicine and wellness in the Department of Surgery at Harvard-affiliated Massachusetts General Hospital. "It can be a real team effort, too. You take care of the dog, and the dog takes care of you."'),
+  CardItem(
+      'Discrimination at work is linked to high blood pressure',
+      'Julie Corliss',
+      'assets/explore_image/image 19.png',
+      'HEART HEALTH',
+      'How can discrimination affect our health? "The daily hassles and indignities people experience from discrimination are a specific type of stress that is not always included in traditional measures of stress and adversity," says sociologist David R. Williams, professor of public health at the Harvard T.H. Chan School of Public Health. Yet multiple studies have documented that experiencing discrimination increases risk for developing a broad range of factors linked to heart disease. Along with high blood pressure, this can also include chronic low-grade inflammation, obesity, and type 2 diabetes. More than 25 years ago, Williams created the Everyday Discrimination Scale. This is the most widely used measure of discrimination`s effects on health.'),
+  CardItem(
+      'Menjaga Kesehatan Mental dengan Memberikan Dukungan dan Perhatian',
+      'Kompasiana',
+      'assets/explore_image/image 20.png',
+      'Mental health',
+      'Kesehatan mental merupakan aspek yang tak kalah pentingnya dengan kesehatan fisik dalam menjalani kehidupan sehari-hari. Di tengah berbagai tuntutan dan tekanan hidup modern, terutama bagi para remaja generasi muda. Semakin banyak orang yang mulai menyadari pentingnya menjaga keseimbangan mental mereka. Kesehatan mental tidak hanya tentang ketiadaan gangguan mental, tetapi juga mencakup kemampuan untuk mengatasi stres, menjaga kestabilan emosi, dan merawat kesejahteraan jiwa.'),
+  CardItem(
+      'Junk food addiction more common in women',
+      'Maureen Salamon',
+      'assets/explore_image/image 21.png',
+      'Mind & Mood',
+      'Nearly one in five older women showed signs of addiction to highly processed foods and drinks over the past year, a higher proportion than in men, a new nationally representative poll indicates. The survey, part of University of Michigan`s National Poll on Healthy Aging, was published online Jan. 30, 2023. It involved 2,163 people, ages 50 through 80, who were questioned online or by phone in July 2022. Participants answered 13 questions gauging addictive behaviors and thoughts related to highly processed foods such as sweets, salty snacks, sugary drinks, and fast food. These addiction indicators include intense cravings, inability to cut down on consumption, and signs of withdrawal. To meet the definition of addiction to highly processed food, participants had to report experiencing at least two of 11 symptoms, as well as significant distress or problems related to eating, at least twice a week.'),
+  CardItem(
+      'Slowing down racing thoughts',
+      'Matthew Solan',
+      'assets/explore_image/image 22.png',
+      'Mind & Mood',
+      'Everyone has moments when their brain suddenly goes haywire. They repeatedly fixate on the same thought, like being stuck on a hamster wheel. Or their thoughts aimlessly bounce from one random topic to the next like a pinball. People often refer to these thought patterns as racing thoughts, and the most common cause is anxiety, says Fairlee Fabrett, PhD, a psychologist at Harvard-affiliated McLean Hospital. "People who struggle with racing thoughts are constantly worried about what needs to be done, what hasn`t been done, and what is next," says Fabrett. "Or they obsess about past, present, or future situations." For example, you replay a conversation with different versions of dialogue, ruminate about an upcoming meeting with your boss or medical appointment, or worry about an unlikely doomsday scenario. "When racing thoughts take over your mind you can`t stay focused, and you feel trapped, which makes you even more anxious and stressed, and the cycle continues," says Fabrett.'),
+  CardItem(
+      'How to identify anxiety disorders',
+      'Matthew Solan',
+      'assets/explore_image/image 23.png',
+      'Mind & Mood',
+      'Everyone experiences anxiety symptoms — a thumping heart, rapid breathing, and feelings of apprehension and fear — from time to time. You might have felt anxious before an important event, a major medical procedure, or a social situation. Some degree of anxiety is normal and signals that something is awry or needs our focused attention. "However, you don’t want this response to become exaggerated or to dominate your life," says Dr. Stephanie Collier, director of education for the Division of Geriatric Psychiatry at Harvard-affiliated McLean Hospital. "If you often feel anxious without an apparent cause, you may have an anxiety disorder."'),
+  CardItem(
+      'Prolonged stress may increase the risk of death from cancer',
+      'Maureen Salamon',
+      'assets/explore_image/image 24.png',
+      'Cancer stress helath',
+      'Long-term exposure to stress has long been known to increase risk for cardiovascular disease. A study in the September 2022 issue of SSM—Population Health suggests it also may raise the risk of dying from cancer. Investigators looked at health information — including body mass index, blood pressure, total cholesterol, blood glucose, and C-reactive protein (a measure of inflammation) — on 41,000 participants in the National Health and Nutrition Examination Survey. Based on these and other data, the researchers determined everyone’s allostatic load — that is, the cumulative effect of stress over time. Scores ranged from 0 to 9, with scores higher than 3 indicating a high allostatic load. Researchers then determined how many of these people later died of cancer. They found that those with high allostatic loads were 2.4 times more likely to die from cancer than those with low allostatic loads. The connection between stress and cancer could be related to the body’s exposure to cortisol, the stress hormone. The body releases cortisol during stressful events, but levels usually decrease once the threat has passed. However, exposure to ongoing stressors can keep cortisol levels consistently high, which can wear down the body on a cellular level, according to the research team. They added that other studies have suggested this reaction may raise the risk of cancer or cause existing cancer to spread more rapidly.'),
 ];
 List<CardItem> filteredCards = [];
